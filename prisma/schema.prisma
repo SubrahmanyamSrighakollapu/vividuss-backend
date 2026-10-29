@@ -108,6 +108,9 @@ model Website {
   template Template?     @relation(fields: [templateId], references: [id], onDelete: SetNull)
   pages    WebsitePage[]
 
+  publicationState WebsitePublicationState?
+  revisions WebsiteRevision[]
+
   @@index([userId])
 }
 
@@ -159,4 +162,34 @@ model MediaAsset {
   updatedAt  DateTime @updatedAt
 
   @@index([userId])
+}
+
+model WebsitePublicationState {
+  websiteId String @id
+  draftVersion Int @default(0)
+  publicationVersion Int @default(0)
+  activeRevisionId String?
+  publishedSlug String? @unique
+  globalLayout Json?
+  updatedAt DateTime @updatedAt
+  website Website @relation(fields: [websiteId], references: [id], onDelete: Restrict)
+  activeRevision WebsiteRevision? @relation("ActiveRevision", fields: [websiteId, activeRevisionId], references: [websiteId, id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model WebsiteRevision {
+  id String @id @default(cuid())
+  websiteId String
+  sequence Int
+  snapshot Json
+  snapshotHash String @db.VarChar(64)
+  kind String @default("PUBLISH")
+  actorId String
+  createdAt DateTime @default(now())
+  restoredFromRevisionId String?
+  website Website @relation(fields: [websiteId], references: [id], onDelete: Restrict)
+  restoredFrom WebsiteRevision? @relation("RevisionRestoration", fields: [websiteId, restoredFromRevisionId], references: [websiteId, id], onDelete: NoAction, onUpdate: NoAction)
+  restorations WebsiteRevision[] @relation("RevisionRestoration")
+  activeFor WebsitePublicationState[] @relation("ActiveRevision")
+  @@unique([websiteId, sequence])
+  @@unique([websiteId, id])
 }
