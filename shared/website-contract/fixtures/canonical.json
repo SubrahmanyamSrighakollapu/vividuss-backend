@@ -1,0 +1,6 @@
+{
+  "format": "vividuss.puck.page", "schemaVersion": 1, "registryVersion": 1,
+  "documentId": "example-page", "metadata": {"title": "Published example", "description": "Canonical nested slots"},
+  "root": {"props": {"title": "Example", "responsive": {"desktop": {"maxWidth": "1280px"}, "tablet": {"maxWidth": "768px"}, "mobile": {"maxWidth": "100%"}}}},
+  "content": [{"type": "Section", "props": {"id": "example-section", "content": [{"type": "Heading", "props": {"id": "example-heading", "text": "Welcome to Vividuss", "level": "h1", "responsive": {"tablet": {"fontSize": 32}, "mobile": {"fontSize": 24}}}}]}}]
+}

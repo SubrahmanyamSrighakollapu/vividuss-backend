@@ -1,0 +1,162 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WebsiteCategory {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  icon        String?
+  thumbnail   String?
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  templates Template[]
+
+  @@index([isActive, sortOrder])
+}
+
+
+model Template {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String?  @unique
+  description String?
+
+  globalLayout Json?
+
+  category    String
+  categoryId  String?
+  thumbnail   String?
+  status      String   @default("PUBLISHED")
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  theme       Json?
+
+  websiteCategory WebsiteCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  pages    TemplatePage[]
+  websites Website[]
+
+  @@index([categoryId])
+  @@index([status, updatedAt])
+}
+
+
+model TemplatePage {
+  id         String @id @default(cuid())
+  name       String
+  slug       String
+  order      Int
+  templateId String
+
+   // Canonical Puck document for editing this template page.
+  editorData Json?
+
+  // Dedicated page-level responsive configuration.
+  responsive Json?
+
+  template Template          @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  sections TemplateSection[]
+
+  @@unique([templateId, slug])
+  @@index([templateId])
+}
+
+model TemplateSection {
+  id      String @id @default(cuid())
+  type    String
+  order   Int
+  content Json
+  config  Json?
+  pageId  String
+
+  page TemplatePage @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@index([pageId])
+}
+
+model Website {
+  id         String   @id @default(cuid())
+  name       String
+  slug       String   @unique
+  userId     String
+  templateId String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  theme      Json?
+
+  isPublished   Boolean   @default(false)
+  publishedAt   DateTime?
+  publishedData Json?
+
+  template Template?     @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  pages    WebsitePage[]
+
+  @@index([userId])
+}
+
+model WebsitePage {
+  id        String @id @default(cuid())
+  name      String
+  slug      String
+  order     Int
+  websiteId String
+
+   // Canonical Puck document for editing this template page.
+  editorData Json?
+
+  // Dedicated page-level responsive configuration.
+  responsive Json?
+
+  website  Website          @relation(fields: [websiteId], references: [id], onDelete: Cascade)
+  sections WebsiteSection[]
+
+  @@unique([websiteId, slug])
+  @@index([websiteId])
+}
+
+model WebsiteSection {
+  id      String @id @default(cuid())
+  type    String
+  order   Int
+  content Json
+  config  Json?
+  pageId  String
+
+  page WebsitePage @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@index([pageId])
+}
+
+model MediaAsset {
+  id         String   @id @default(cuid())
+  userId     String
+  url        String
+  filename   String
+  alt        String?
+  mimeType   String?
+  width      Int?
+  height     Int?
+  provider   String   @default("url")
+  providerId String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([userId])
+}

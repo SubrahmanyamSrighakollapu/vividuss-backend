@@ -1,0 +1,246 @@
+{
+  "errors": 0,
+  "warnings": 40,
+  "findings": [
+    {
+      "file": "app/admin/categories/page.jsx",
+      "line": 753,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "app/admin/page.jsx",
+      "line": 247,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "app/admin/page.jsx",
+      "line": 539,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "app/admin/templates/new/page.jsx",
+      "line": 331,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "app/admin/templates/page.jsx",
+      "line": 409,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "app/templates/[id]/page.jsx",
+      "line": 188,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "app/templates/page.jsx",
+      "line": 183,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/TemplateCard.jsx",
+      "line": 17,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/builder/properties/AboutProperties.jsx",
+      "line": 416,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/builder/properties/GalleryProperties.jsx",
+      "line": 177,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/home/Header.jsx",
+      "line": 157,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/home/Header.jsx",
+      "line": 200,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/home/Header.jsx",
+      "line": 393,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/media/MediaInput.jsx",
+      "line": 46,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/media/MediaLibraryModal.jsx",
+      "line": 560,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/sections/Gallery.jsx",
+      "line": 62,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/sections/LogoCloud.jsx",
+      "line": 40,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/sections/Portfolio.jsx",
+      "line": 81,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/sections/Testimonials.jsx",
+      "line": 92,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/contentComponents.jsx",
+      "line": 140,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/industryComponents.jsx",
+      "line": 130,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/industryComponents.jsx",
+      "line": 480,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/industryComponents.jsx",
+      "line": 596,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/industryComponents.jsx",
+      "line": 611,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/industryComponents.jsx",
+      "line": 718,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/industryComponents.jsx",
+      "line": 1224,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/industryComponents.jsx",
+      "line": 1571,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/marketingComponents.jsx",
+      "line": 731,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/marketingComponents.jsx",
+      "line": 833,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/marketingComponents.jsx",
+      "line": 858,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/marketingComponents.jsx",
+      "line": 1641,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/marketingComponents.jsx",
+      "line": 2362,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/marketingComponents.jsx",
+      "line": 2581,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/mediaComponents.jsx",
+      "line": 184,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/mediaComponents.jsx",
+      "line": 350,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/navigationComponents.jsx",
+      "line": 799,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/navigationComponents.jsx",
+      "line": 1225,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/navigationComponents.jsx",
+      "line": 1906,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/components/typographyComponents.jsx",
+      "line": 491,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "components/website-builder/fields/helpers.js",
+      "line": 296,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    }
+  ]
+}

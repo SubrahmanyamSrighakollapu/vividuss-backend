@@ -1,0 +1,5 @@
+{
+  "root": {"props": {"title": "Historical page", "unknownRoot": "preserve"}},
+  "content": [{"type": "Heading", "props": {"id": "historical-heading", "text": "Legacy café — 世界", "unknownHistorical": {"nested": [1, true, null]}}}],
+  "historicalExtension": {"keep": true}
+}

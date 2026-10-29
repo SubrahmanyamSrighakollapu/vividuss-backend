@@ -1,0 +1,11 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T10:46:00.566Z",
+    "duration": 3761.4029999999993,
+    "expected": 2,
+    "skipped": 6,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "blockedReason": "No valid Clerk staging configuration; six document-navigation cases explicitly skipped after actual handshake failures"
+}

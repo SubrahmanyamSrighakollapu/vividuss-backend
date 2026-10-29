@@ -1,0 +1,15 @@
+# Component compatibility and versioning policy
+
+The implementation authority is shared/website-contract/index.cjs and component-contracts.json, generated from the actual Puck definitions. See [format specification](CANONICAL_WEBSITE_JSON.md) and [complete inventory](COMPONENT_REGISTRY_INVENTORY.md).
+
+1. Keep registered names stable. v1 has 55 views and two required historical names, Header and Features. Aliases receive contracts and public registrations even though they are absent from the palette.
+2. Every type needs an editor adapter, machine-readable contract and render-only registration referencing the same shared React implementation. Registry coverage and generated-data equality tests enforce this. A new palette entry cannot ship with missing validation/public support.
+3. Each component contract has version 1; registryVersion identifies the compatible set. Do not add incompatible required node metadata or replace Puck's root/content/props/slot semantics. Numeric step remains panel metadata; hard semantic bounds use min/max/type/enums.
+4. Preserve exact existing defaults, style semantics, slots, unknown historical fields and source JSON. Defaults are rendering/authoring behavior, not permission to bulk-write missing props into stored documents. Canonical default-only props retain typed inference from registered defaults.
+5. Meaning changes, removed types/props, stricter semantic ranges or slot changes require a new reviewed registry/schema version, explicit reader compatibility and representative data/browser regression evidence. Unknown future versions fail explicitly; no silent downgrade.
+6. Canonical saves/publish use strict recursive validation. Unversioned content uses compatibility reporting with hard safety resource bounds. Historical warnings are not proof of sanitized content; inventory customer exports before strict rollout. Canonical records cannot be downgraded to bypass their rules.
+7. Converters must operate on explicit copies and report loss, preserve originals and ownership, and support preview/rejection. Keep legacy views where equivalence is unproven. No automatic section-to-Puck migration is enabled.
+8. Future extension types may use reviewed namespaced names and explicit registry compatibility contracts. Component code is installed through trusted source/deployment review; submitted JSON cannot load modules or execute JavaScript. Entitlements/resource authorization belong to backend services, not JSON flags.
+9. AI proposals must validate against the same server contract and retain identities/references. No AI-specific bypass, ad-hoc generated React implementation or unrestricted property bag is permitted for canonical content. Concurrency and reversible application require the next publication/history foundations.
+
+SSR identity/source preservation covers all registered views; pixel parity currently covers a representative nested fixture at three widths. Interactivity, hydration, signed-in editing, provider uploads and arbitrary historical array-item metadata remain runtime acceptance work. Component retirement requires an independent usage/corpus audit and product approval.

@@ -1,0 +1,31 @@
+{
+  "scope": "Isolated shared-view setContent harness; no Clerk/app routes/database",
+  "stats": {
+    "startTime": "2026-10-29T13:58:51.218Z",
+    "duration": 7866.472,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "name": "isolated nested shared views have equal preview/public pixels and responsive CSS",
+      "project": "desktop",
+      "outcome": "expected",
+      "status": "passed"
+    },
+    {
+      "name": "isolated nested shared views have equal preview/public pixels and responsive CSS",
+      "project": "tablet",
+      "outcome": "expected",
+      "status": "passed"
+    },
+    {
+      "name": "isolated nested shared views have equal preview/public pixels and responsive CSS",
+      "project": "mobile",
+      "outcome": "expected",
+      "status": "passed"
+    }
+  ]
+}

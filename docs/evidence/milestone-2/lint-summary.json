@@ -1,0 +1,246 @@
+{
+  "errors": 0,
+  "warnings": 40,
+  "messages": [
+    {
+      "file": "frontend/app/admin/categories/page.jsx",
+      "line": 753,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/app/admin/page.jsx",
+      "line": 247,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/app/admin/page.jsx",
+      "line": 539,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/app/admin/templates/new/page.jsx",
+      "line": 331,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/app/admin/templates/page.jsx",
+      "line": 409,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/app/templates/[id]/page.jsx",
+      "line": 186,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/app/templates/page.jsx",
+      "line": 183,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/TemplateCard.jsx",
+      "line": 17,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/builder/properties/AboutProperties.jsx",
+      "line": 416,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/builder/properties/GalleryProperties.jsx",
+      "line": 177,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/home/Header.jsx",
+      "line": 157,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/home/Header.jsx",
+      "line": 200,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/home/Header.jsx",
+      "line": 393,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/media/MediaInput.jsx",
+      "line": 46,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/media/MediaLibraryModal.jsx",
+      "line": 560,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/sections/Gallery.jsx",
+      "line": 62,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/sections/LogoCloud.jsx",
+      "line": 40,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/sections/Portfolio.jsx",
+      "line": 81,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/sections/Testimonials.jsx",
+      "line": 92,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/fields/helpers.js",
+      "line": 297,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/contentViews.jsx",
+      "line": 59,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/industryViews.jsx",
+      "line": 60,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/industryViews.jsx",
+      "line": 326,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/industryViews.jsx",
+      "line": 398,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/industryViews.jsx",
+      "line": 413,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/industryViews.jsx",
+      "line": 470,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/industryViews.jsx",
+      "line": 765,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/industryViews.jsx",
+      "line": 1034,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/marketingViews.jsx",
+      "line": 511,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/marketingViews.jsx",
+      "line": 613,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/marketingViews.jsx",
+      "line": 638,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/marketingViews.jsx",
+      "line": 1200,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/marketingViews.jsx",
+      "line": 1667,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/marketingViews.jsx",
+      "line": 1792,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/mediaViews.jsx",
+      "line": 74,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/mediaViews.jsx",
+      "line": 160,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/navigationViews.jsx",
+      "line": 527,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/navigationViews.jsx",
+      "line": 953,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/navigationViews.jsx",
+      "line": 1404,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    },
+    {
+      "file": "frontend/components/website-builder/views/typographyViews.jsx",
+      "line": 266,
+      "rule": "@next/next/no-img-element",
+      "severity": 1
+    }
+  ]
+}

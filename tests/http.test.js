@@ -1,0 +1,42 @@
+const { test } = require("node:test");
+const assert = require("node:assert/strict");
+const express = require("express");
+const { createApp } = require("../src/app");
+const { mutationLimiter } = require("../src/middleware/requestPolicy");
+
+test("real Express parsing: larger payloads, malformed JSON, bounded requests and CORS", async t => {
+  const router = express.Router();
+  router.post("/echo", (req, res) => res.json({ length: req.body.text.length }));
+  const websites = express.Router();
+  websites.patch("/:id/draft", (req, res) => res.json({ length: req.body.text.length }));
+  const app = createApp({ origins: ["http://localhost:3000"], authenticate: (req, res, next) => next(), routes: { test: router, websites } });
+  const server = app.listen(0, "127.0.0.1");
+  await new Promise(resolve => server.once("listening", resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const url = `http://127.0.0.1:${server.address().port}/api/test/echo`;
+  const post = body => fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body });
+  let response = await post(JSON.stringify({ text: "a".repeat(200_000) }));
+  assert.equal(response.status, 200);
+  assert.equal((await response.json()).length, 200_000);
+  response = await post('{"text":');
+  assert.equal(response.status, 400); assert.match((await response.json()).message, /Malformed/);
+  response = await post(JSON.stringify({ text: "a".repeat(2_100_001) }));
+  assert.equal(response.status, 413); assert.equal((await response.json()).success, false);
+  response = await fetch(url.replace("test/echo", "websites/w/draft"), { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: "a".repeat(1_200_000) }) });
+  assert.equal(response.status, 200);
+  response = await fetch(url.replace("test/echo", "websites/w/draft"), { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: "a".repeat(8_000_001) }) });
+  assert.equal(response.status, 413);
+  response = await fetch(url, { headers: { Origin: "https://unapproved.example" } });
+  assert.equal(response.status, 403);
+  response = await fetch(url, { method: "OPTIONS", headers: { Origin: "http://localhost:3000", "Access-Control-Request-Method": "POST" } });
+  assert.equal(response.headers.get("access-control-allow-origin"), "http://localhost:3000");
+});
+test("mutation rate bounds and expiry", () => {
+  let now = 0, next = 0, status;
+  const middleware = mutationLimiter({ limit: 2, now: () => now });
+  const req = { method: "PUT", ip: "test" };
+  const res = { setHeader() {}, status(value) { status = value; return this; }, json() {} };
+  for (let i = 0; i < 3; i++) middleware(req, res, () => next++);
+  assert.equal(next, 2); assert.equal(status, 429);
+  now = 60_001; middleware(req, res, () => next++); assert.equal(next, 3);
+});

@@ -1,0 +1,11 @@
+{
+  "stats": {
+    "startTime": "2026-10-29T10:43:04.214Z",
+    "duration": 11169.57,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  },
+  "blocker": "Missing valid Clerk staging keys: dev-browser-missing handshake redirects to clerk.example.test"
+}

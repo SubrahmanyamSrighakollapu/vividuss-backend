@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:vividuss:puck:page:1",
+  "title": "Vividuss canonical editable page v1",
+  "type": "object",
+  "required": ["format", "schemaVersion", "registryVersion", "documentId", "root", "content"],
+  "properties": {
+    "format": {"const": "vividuss.puck.page"},
+    "schemaVersion": {"const": 1},
+    "registryVersion": {"const": 1},
+    "documentId": {"type": "string", "minLength": 1, "maxLength": 200},
+    "root": {"type": "object", "required": ["props"], "properties": {"props": {"type": "object"}}},
+    "content": {"type": "array", "items": {"$ref": "#/$defs/component"}},
+    "zones": {"type": "object", "additionalProperties": {"type": "array", "items": {"$ref": "#/$defs/component"}}},
+    "metadata": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"title": {"type": "string"}, "description": {"type": "string"}, "canonicalUrl": {"type": "string"}, "noIndex": {"type": "boolean"}}
+    },
+    "themeRef": {"type": "string"},
+    "globalLayoutRef": {"type": "string"}
+  },
+  "$defs": {
+    "component": {
+      "type": "object", "required": ["type", "props"],
+      "properties": {"type": {"type": "string"}, "props": {"type": "object", "required": ["id"], "properties": {"id": {"type": "string", "minLength": 1, "maxLength": 200}}}}
+    }
+  },
+  "$comment": "Envelope interchange schema. Registry-specific props, slots, identity uniqueness, safety and resource bounds are enforced by index.cjs using component-contracts.json. This schema alone is not a publish validator."
+}
