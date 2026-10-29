@@ -37,7 +37,13 @@ function attachPublicationIntegrity(legacy) {
   result.getWebsitePageEditorData = (id, pageId, userId) => enabled()
     ? publication.readDraft(id, userId, () => legacy.getWebsitePageEditorData(id, pageId, userId)) : legacy.getWebsitePageEditorData(id, pageId, userId);
   result.publishWebsite = (id, userId, customSlug) => enabled()
-    ? publication.publish(id, userId, { customSlug, validateSlug: legacy.validateCustomSlug }) : legacy.publishWebsite(id, userId, customSlug);
+    ? publication.publish(id, userId, { customSlug, resolveSlug: async (website, requested, tx) => {
+      if (requested != null && typeof requested !== "string") throw fail("Website slug must be a string",400,"INVALID_SLUG");
+      const custom = requested?.trim();
+      let slug = custom || website.slug;
+      if (!custom && (!slug || legacy.RESERVED_SLUGS.has(slug) || ["website-name","template","site"].includes(slug))) slug = await legacy.makeUniqueWebsiteSlug(website.name || "site",tx,website.id);
+      return legacy.validateCustomSlug(slug,website.id,tx);
+    } }) : legacy.publishWebsite(id, userId, customSlug);
   result.getPublishedWebsiteBySlug = slug => publication.publicWebsite(slug, legacy.getPublishedWebsiteBySlug);
   result.createWebsiteFromTemplate = (...args) => {
     if (!enabled()) return legacy.createWebsiteFromTemplate(...args);

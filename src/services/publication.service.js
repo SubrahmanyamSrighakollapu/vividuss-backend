@@ -65,13 +65,14 @@ async function setLayout(websiteId, userId, layout, context) {
   validateLayout(layout);
   return mutate({ websiteId }, userId, () => prisma.websitePublicationState.update({ where: { websiteId }, data: { globalLayout: layout === null ? require("@prisma/client").Prisma.DbNull : layout } }), context);
 }
-async function publish(websiteId, userId, { context = requests.getStore(), customSlug, restoreId, validateSlug } = {}) {
+async function publish(websiteId, userId, { context = requests.getStore(), customSlug, restoreId, resolveSlug } = {}) {
   requireEnabled();
   let committedState;
   const output = await prisma.$transaction(async tx => {
     const state = await lockState(tx, websiteId, userId);
     expected(context, state, true);
     const website = await tx.website.findFirst({ where: { id: websiteId, userId }, include });
+    const originalDraftSlug = website.slug;
     let source, sourceKind;
     if (restoreId) {
       const original = await tx.websiteRevision.findFirst({ where: { id: restoreId, websiteId } });
@@ -81,8 +82,8 @@ async function publish(websiteId, userId, { context = requests.getStore(), custo
       // Website routing identity stays stable during restoration. Page routing,
       // name, theme and layout come from the historical snapshot.
       source = { ...source, slug: state.publishedSlug || source.slug || website.slug };
-    } else if (customSlug) website.slug = await validateSlug(customSlug, websiteId, tx);
-    if (!restoreId) website.slug = await validateSlug(website.slug, websiteId, tx);
+    } else website.slug = await resolveSlug(website,customSlug,tx);
+    const draftSlugChanged = !restoreId && website.slug !== originalDraftSlug;
     const slug = source?.slug || website.slug;
     const collision = await tx.websitePublicationState.findFirst({ where: { publishedSlug: slug, NOT: { websiteId } } });
     const legacyCollision = await tx.website.findFirst({ where: { slug, isPublished: true, NOT: { id: websiteId } } });
@@ -98,9 +99,9 @@ async function publish(websiteId, userId, { context = requests.getStore(), custo
     const event = { id: crypto.randomUUID(), kind: restoreId ? "RESTORE" : "PUBLISH", sequence: baseSequence + 1, createdAt: new Date(), restoredFromRevisionId: restoreId || null };
     const snapshot = buildRevisionSnapshot(website, state, event, source, sourceKind);
     const revision = await tx.websiteRevision.create({ data: { ...event, websiteId, actorId: userId, snapshot, snapshotHash: hash(snapshot) }, select: metadata });
-    const next = await tx.websitePublicationState.update({ where: { websiteId }, data: { activeRevisionId: revision.id, publicationVersion: event.sequence, publishedSlug: slug } });
+    const next = await tx.websitePublicationState.update({ where: { websiteId }, data: { activeRevisionId: revision.id, publicationVersion: event.sequence, publishedSlug: slug, ...(draftSlugChanged ? {draftVersion:{increment:1}} : {}) } });
     // Compatibility readers receive the same snapshot, never a separate draft.
-    await tx.website.update({ where: { id: websiteId }, data: { isPublished: true, publishedAt: event.createdAt, publishedData: snapshot } });
+    await tx.website.update({ where: { id: websiteId }, data: { isPublished: true, publishedAt: event.createdAt, publishedData: snapshot, ...(draftSlugChanged ? {slug} : {}) } });
     committedState = next;
     return { id: websiteId, name: snapshot.name, slug, isPublished: true, publishedAt: event.createdAt, revision, concurrency: tokens(next) };
   }, { timeout: 15000 });

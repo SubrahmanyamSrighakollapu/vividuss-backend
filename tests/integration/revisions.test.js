@@ -224,3 +224,13 @@ test("active revision resolution still honors the existing published visibility 
  assert.equal(await service.getPublishedWebsiteBySlug(site.slug),null);
  assert.equal((await publication.list(site.id,owner)).revisions.length,1);
 });
+
+test("explicit publication retains legacy reserved-slug repair and advances the changed draft token",async()=>{
+ const site=await fixture();await prisma.website.update({where:{id:site.id},data:{slug:"site"}});
+ const first=await publish(site);
+ assert.notEqual(first.slug,"site");assert.match(first.slug,/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+ assert.equal(first.concurrency.draftVersion,1);
+ assert.equal((await service.getWebsiteById(site.id,owner)).slug,first.slug);
+ const second=await publish(site);assert.equal(second.slug,first.slug);assert.equal(second.concurrency.draftVersion,1);
+ await assert.rejects(run({},()=>service.publishWebsite(site.id,owner)),{statusCode:409});
+});
