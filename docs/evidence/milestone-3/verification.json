@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-29",
+  "branch": "implementation/milestone-3",
+  "rollout": "disabled by default; not live",
+  "backendUnit": 37,
+  "frontendUnit": 24,
+  "postgresIntegration": 25,
+  "legacyOnlyIntegration": 8,
+  "offModeBeforeRevisionSchema": 8,
+  "isolatedChrome": 6,
+  "backendSyntaxFiles": 50,
+  "lint": {
+    "errors": 0,
+    "warnings": 41
+  },
+  "builds": {
+    "backend": "Prisma Client 6.19 generation passed",
+    "frontend": "Next.js production build passed"
+  },
+  "models": [
+    "WebsitePublicationState",
+    "WebsiteRevision"
+  ],
+  "existingScalarColumnsAdded": 0,
+  "originalHistoricalMigrationsChanged": false,
+  "heldBaselinePromoted": false,
+  "revisionProposalPromoted": false,
+  "existingDatabasesModified": false,
+  "disposableContainerRemoved": true,
+  "sharedContractFilesIdentical": 5,
+  "blocked": [
+    "Clerk authenticated staging/browser acceptance",
+    "Real ImageKit/Cloudinary transfers",
+    "Existing populated schema/ledger inventory",
+    "Baseline reconciliation approval",
+    "Revision migration approval",
+    "Real backup/restored-copy preservation rehearsal",
+    "Full authenticated interactive/hydration/visual acceptance"
+  ],
+  "automaticReview": {
+    "rejected": "Implicit legacy history creation during ordinary draft edit",
+    "reason": "No automatic conversions or silent legacy writes",
+    "resolution": "No import on reads/ordinary edits; legacy URL changes require explicit publication first"
+  },
+  "finalDisposableContainerRemoved": true,
+  "finalRegression": "Reserved/generic slug repair on explicit publication; saved URL and draft version updated atomically"
+}

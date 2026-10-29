@@ -1,0 +1,25 @@
+{
+  "identicalAcrossRepos": true,
+  "files": [
+    {
+      "file": "shared/website-contract/component-contracts.json",
+      "sha256": "4d3c3bed5a4f78953680155e56d374075c929bb9b8307c299faf5063e5cfb080"
+    },
+    {
+      "file": "shared/website-contract/fixtures/canonical.json",
+      "sha256": "c0be63cf52a0e2393c448956a2619c30b3b14d8afa897595df12968c1b9f277f"
+    },
+    {
+      "file": "shared/website-contract/fixtures/unversioned.json",
+      "sha256": "f4dd0ed78b1676b813c3f456333b9d35e6b56df8feb84569a169017ce1abdae4"
+    },
+    {
+      "file": "shared/website-contract/index.cjs",
+      "sha256": "e97ae0cda0a758306092ec59e654c622bd4e34606a3ea463a89c09c07acded67"
+    },
+    {
+      "file": "shared/website-contract/page.schema.json",
+      "sha256": "0619f9f837b7d9a4592e13a74e3ddff5deb9854a8522f93fa5023b6a17af3fb6"
+    }
+  ]
+}

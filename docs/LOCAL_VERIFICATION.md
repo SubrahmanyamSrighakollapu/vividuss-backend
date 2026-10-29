@@ -69,3 +69,13 @@ test:render requires installed Chrome and a successful build for compiled CSS. I
 Integration suite now includes canonical save/reload, unsafe-edit/downgrade rejection, identity forking and real multi-page rollback. It still requires connectDisposable's exact allowlist and marker. M2 used a fresh tmpfs PostgreSQL container and the legacy-named guard namespace, bootstrapped unchanged current-schema SQL only there, then verified representative original hashes. No deployable migration was added/applied. Reproduction requires newly verified disposable resources; never reuse the now-removed test container/port from the report.
 
 Windows sandbox may reject Node/Next/Chrome workers with spawn EPERM; run the same command with the appropriate local process permission. Do not weaken tests or framework versions to work around it. Clerk staging and media transfer acceptance remain blocked unless real test credentials are supplied.
+
+## Milestone 3 standalone commands and gates
+
+Run from each repository root. Backend: npm run build, npm run check, npm test. Frontend: npm test, npm run lint, npm run build, npm run test:render (installed Chrome required). Default tests remain database-independent. New isolated browser cases verify local JSON downloads as well as three-width shared rendering.
+
+Leave VIVIDUSS_PUBLICATION_REVISIONS disabled/unset in ordinary unapproved environments. No frontend build flag is needed: UI capabilities come from authenticated backend draft responses. New revision routes are disabled until the backend gate is enabled. Enabled startup checks schema/models/guards; never enable it just to suppress a migration error. See PUBLICATION_API.md for expected version headers.
+
+Guarded integration uses matching TEST_DATABASE_URL/DISPOSABLE_DATABASE_URL and service DATABASE_URL, ALLOW_DATABASE_WRITES=disposable, loopback/test role/database allowlist and server marker. The new M3 worker enables revisions only in its own verified test process; old integration workers retain disabled compatibility. Prepare the approved disposable schema in the documented order before npm run test:integration. scripts/verify-legacy-subset.js compares captured original fixtures while separately checking retained immutable test rows. Do not disable triggers or delete history for cleanup; remove only the owned disposable container after evidence capture.
+
+Authenticated Clerk app workflows, actual media transfers and full interactive/hydration/customer-corpus acceptance remain blocked without real test configuration. No authentication bypass was added.

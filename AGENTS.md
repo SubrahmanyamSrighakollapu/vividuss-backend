@@ -12,3 +12,8 @@
 
 # Standalone repository
 Application files are at the repository root. shared/website-contract is a versioned local copy synchronized with the paired repository. Historical milestone docs refer to the original monorepo paths; use README.md for current commands.
+
+# Milestone 3 rollout rules
+- Publication revisions remain disabled by default until baseline/revision schema and production gates are approved. Keep proposal 002 outside automatic Prisma deployment.
+- Legacy history may be copied only on explicit publication; never import history on reads or ordinary edits. Require explicit publish before an unadopted legacy live-URL change.
+- Enabled writes require the loaded expected versions. Never retry with a freshly fetched token or replace local unsaved work after a conflict.

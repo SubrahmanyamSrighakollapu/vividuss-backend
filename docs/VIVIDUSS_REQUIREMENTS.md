@@ -9,3 +9,5 @@ Future AI scope includes AI Touch, generated sections/sites, preview/apply/rejec
 Compatibility: preserve existing template/site JSON, legacy section rendering, custom media URLs and global layouts until migration is verified. No silent conversion.
 
 Milestone 1: startup/environment, reproducible verification, layout/category repairs, bounded JSON requests, reliable editor flush/publish, and immediate security controls. No AI, hostname renderer, tenant redesign, monorepo restructure, or populated-database migration.
+
+Milestone 3 implements publication integrity (immutable revisions, atomic publish/restore, optimistic concurrency, snapshot-scoped routing/metadata/theme/layout and safe local conflict recovery) behind disabled-by-default rollout controls. Production activation requires separately approved schema/backup/staging gates; no ordinary-edit legacy conversion is permitted.

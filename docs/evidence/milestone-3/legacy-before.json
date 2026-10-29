@@ -1,0 +1,52 @@
+{
+  "tables": {
+    "Template": {
+      "count": 1,
+      "ids": [
+        "legacy-t"
+      ],
+      "sha256": "84c9a81e566d7c7bf1f37466f463bd35397cc6a1e770c7e5ca243b937e4db00c"
+    },
+    "TemplatePage": {
+      "count": 1,
+      "ids": [
+        "legacy-tp"
+      ],
+      "sha256": "2cb0f8e3b7d073212a086f9e2018dbc920260daecd00f9a3a8c1dcabe5dc389e"
+    },
+    "TemplateSection": {
+      "count": 1,
+      "ids": [
+        "legacy-ts"
+      ],
+      "sha256": "4f79c0661bc9dfab894e3c4e813f5fb715859bac9c9fad0ead31f9f2eeb49582"
+    },
+    "WebsiteSection": {
+      "count": 1,
+      "ids": [
+        "legacy-ws"
+      ],
+      "sha256": "70438edee23ec8e9e9516b0199f79a0b02e448839d871a569d887e013857ee26"
+    },
+    "Website": {
+      "count": 1,
+      "ids": [
+        "legacy-w"
+      ],
+      "sha256": "3aae7cbd4de0f1aaaa06f65dbecf6d621e08929d511c719e9b0538e470fed420"
+    },
+    "WebsitePage": {
+      "count": 1,
+      "ids": [
+        "legacy-wp"
+      ],
+      "sha256": "eb30663d4ae3847cacf8110b802b4d05a9c844a9867b6c7a56934b81fffd9d6d"
+    }
+  },
+  "owners": [
+    {
+      "id": "legacy-w",
+      "userId": "fixture-owner"
+    }
+  ]
+}

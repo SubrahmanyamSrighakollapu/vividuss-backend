@@ -1,0 +1,36 @@
+{
+  "proposals": {
+    "001_schema_reconciliation.sql": "1e21e1e2d79a89ab50bc2627f8ebbfc9d0d1f42373152807dd9e2eef8e3c13a2",
+    "002_publication_revisions.sql": "3dddf4344a03252b347c44172904190da0b4ed7a9fd2e76eb300914fae1cc1b8"
+  },
+  "historicalMigrationsUnchanged": true,
+  "proposalsOutsideDeploymentDirectory": true,
+  "ledgerEntries": 3,
+  "baselineBeforeRevisionProposal": "No difference detected against exact M2 schema",
+  "resultAfterRevisionProposal": "No difference detected against current Prisma structural schema",
+  "offModeBeforeRevisionSchema": 8,
+  "enabledStartupWithoutRevisionSchema": "Rejected as expected",
+  "container": {
+    "id": "e5fda4a49b531219408bf35477d3379a0b406bf50572d2dee3f8a3722771f1fa",
+    "name": "vividuss-m3-disposable-3f72",
+    "label": "vividuss.scope=milestone-3",
+    "host": "127.0.0.1",
+    "port": 62765,
+    "mounts": [],
+    "storage": "tmpfs",
+    "postgres": "16.15"
+  },
+  "finalVerification": {
+    "id": "a0a0e9b6197b868a1fbe56f8d08829d592225a41c5a255894d058b5157cc87a5",
+    "name": "vividuss-m3-final-42a8",
+    "label": "vividuss.scope=milestone-3-final",
+    "host": "127.0.0.1",
+    "port": 61841,
+    "mounts": [],
+    "storage": "tmpfs",
+    "database": "vividuss_disposable_m15_mthreefinal",
+    "testsPassed": 25,
+    "removed": true
+  },
+  "hashEncoding": "UTF-8 with normalized LF line endings"
+}

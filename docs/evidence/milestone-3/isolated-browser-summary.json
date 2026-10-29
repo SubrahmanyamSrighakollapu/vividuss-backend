@@ -1,0 +1,49 @@
+{
+  "scope": "Real shared-view rendering and local download helper in isolated Chrome; not authenticated app UI",
+  "stats": {
+    "startTime": "2026-10-29T16:20:30.387Z",
+    "duration": 8991.418,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "name": "isolated nested shared views have equal preview/public pixels and responsive CSS",
+      "project": "desktop",
+      "outcome": "expected",
+      "status": "passed"
+    },
+    {
+      "name": "local draft recovery downloads exact unsaved JSON without server writes",
+      "project": "desktop",
+      "outcome": "expected",
+      "status": "passed"
+    },
+    {
+      "name": "isolated nested shared views have equal preview/public pixels and responsive CSS",
+      "project": "tablet",
+      "outcome": "expected",
+      "status": "passed"
+    },
+    {
+      "name": "local draft recovery downloads exact unsaved JSON without server writes",
+      "project": "tablet",
+      "outcome": "expected",
+      "status": "passed"
+    },
+    {
+      "name": "isolated nested shared views have equal preview/public pixels and responsive CSS",
+      "project": "mobile",
+      "outcome": "expected",
+      "status": "passed"
+    },
+    {
+      "name": "local draft recovery downloads exact unsaved JSON without server writes",
+      "project": "mobile",
+      "outcome": "expected",
+      "status": "passed"
+    }
+  ]
+}
