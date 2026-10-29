@@ -45,6 +45,7 @@ if (!authState.userId) {
     });
 
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Create website error:", error);
 
     if (error.message === "Template not found") {
@@ -96,6 +97,7 @@ const createWebsitePage = async (req, res) => {
       data: page,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Create website page error:", error);
 
     if (error.code === "P2002") {
@@ -178,6 +180,7 @@ const updateWebsitePage = async (req, res) => {
       data: page,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Update website page error:", error);
 
     if (error.code === "P2002") {
@@ -225,6 +228,7 @@ const deleteWebsitePage = async (req, res) => {
       data: result,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Delete website page error:", error);
 
     if (error.message === "Website page not found or unauthorized") {
@@ -272,6 +276,7 @@ const getPageEditorData = async (req, res) => {
       data: page,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Get website page editor data error:", error);
     const status = error.statusCode || 500;
     return res.status(status).json({
@@ -307,6 +312,7 @@ const savePageEditorData = async (req, res) => {
       data: page,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Save website page editor data error:", error);
     const status = error.statusCode || 500;
     return res.status(status).json({
@@ -340,6 +346,7 @@ const duplicateWebsitePage = async (req, res) => {
       data: page,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Duplicate website page error:", error);
     const status = error.statusCode || 500;
     return res.status(status).json({
@@ -373,6 +380,7 @@ const reorderWebsitePages = async (req, res) => {
       data: pages,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Reorder website pages error:", error);
     const status = error.statusCode || 500;
     return res.status(status).json({
@@ -413,6 +421,7 @@ const getWebsite = async (req, res) => {
     });
 
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Get website error:", error);
 
     res.status(500).json({
@@ -445,6 +454,7 @@ const getUserWebsites = async (req, res) => {
       pagination: websites.pagination,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Get user websites error:", error);
     res.status(500).json({
       success: false,
@@ -475,6 +485,7 @@ const updateWebsite = async (req, res) => {
       data: website,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Update website error:", error);
     const status = error.statusCode || 500;
     res.status(status).json({
@@ -510,6 +521,7 @@ const updateWebsiteSection = async (req, res) => {
       data: section,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Update website section error:", error);
 
     res.status(500).json({
@@ -538,6 +550,7 @@ const deleteWebsiteSection = async (req, res) => {
       data: result,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error(
       "Delete website section error:",
       error
@@ -590,6 +603,7 @@ const createWebsiteSection = async (req, res) => {
       data: section,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Create website section error:", error);
 
     if (error.message === "Website page not found") {
@@ -637,6 +651,7 @@ const reorderSections = async (req, res) => {
       data: websitePage,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Reorder sections error:", error);
 
     if (error.message === "Website page not found") {
@@ -677,6 +692,7 @@ const saveWebsiteDraft = async (req, res) => {
       idMappings: website.idMappings,
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     if (error.statusCode && error.statusCode < 500) {
       return res.status(error.statusCode).json({ success: false, message: error.message, ...(error.details ? { code: error.code, errors: error.details } : {}) });
     }
@@ -713,8 +729,10 @@ const publishWebsite = async (req, res) => {
       isPublished: website.isPublished,
       publishedAt: website.publishedAt,
       publicUrl: `/${website.slug}`,
+      ...(website.revision ? { revision: website.revision } : {}),
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Publish website error:", error);
     const status = error.statusCode || 500;
     res.status(status).json({
@@ -740,6 +758,7 @@ const getPublicWebsite = async (req, res) => {
       ...publishedWebsite
     });
   } catch (error) {
+    if (error.statusCode && error.statusCode < 500) return res.status(error.statusCode).json({ success: false, message: error.message, code: error.code, ...(error.concurrency ? { concurrency: error.concurrency } : {}), ...(error.details ? { errors: error.details } : {}) });
     console.error("Get public website error:", error);
     res.status(500).json({ success: false, message: "Failed to fetch public website" });
   }

@@ -23,6 +23,13 @@ const {
 } = require("../controllers/website.controller");
 
 const router = express.Router();
+router.use(require("../lib/publicationContext").requestContext);
+const publication = require("../controllers/publication.controller");
+router.get("/:id/publication-state", publication.state);
+router.get("/:id/revisions", publication.list);
+router.get("/:id/revisions/:revisionId", publication.get);
+router.post("/:id/revisions/:revisionId/restore", publication.restore);
+router.put("/:id/layout", publication.layout);
 
 /**
  * @swagger

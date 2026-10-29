@@ -1,3 +1,4 @@
+const { enabled: publicationEnabled } = require("../lib/publicationContext");
 const { buildPublicationSnapshot } = require("../lib/publicationSnapshot");
 const { createPageDocument, forkPageDocument } = require("../../shared/website-contract/index.cjs");
 const crypto = require("crypto");
@@ -492,6 +493,7 @@ const getUserWebsites = async (
         createdAt: true,
         updatedAt: true,
         publishedData: true,
+        ...(publicationEnabled() ? { publicationState: { select: { publishedSlug: true, activeRevisionId: true } } } : {}),
         theme: true,
         isPublished: true,
         publishedAt: true,
@@ -561,7 +563,7 @@ const updateWebsite = async (id, data, userId) => {
     const validSlug = await validateCustomSlug(data.slug, id, prisma);
     updateData.slug = validSlug;
 
-    if (existing.isPublished && existing.publishedData && typeof existing.publishedData === "object") {
+    if (!publicationEnabled() && existing.isPublished && existing.publishedData && typeof existing.publishedData === "object") {
       updateData.publishedData = {
         ...existing.publishedData,
         slug: validSlug,
@@ -1564,3 +1566,5 @@ module.exports = {
   duplicateWebsitePage,
   reorderWebsitePages,
 };
+
+module.exports = require("./publicationAdapter").attachPublicationIntegrity(module.exports);
